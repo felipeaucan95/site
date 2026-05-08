@@ -1,1 +1,906 @@
+<!DOCTYPE html>
+<html lang="pt-br">
 
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Felipe Candido | Analista de T.I</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    color:#fff;
+    background:#020617;
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+}
+
+/* FUNDO PARALLAX */
+
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    linear-gradient(rgba(2,6,23,0.88),
+    rgba(2,6,23,0.92)),
+    url('https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070&auto=format&fit=crop');
+    background-size:cover;
+    background-position:center;
+    z-index:-2;
+    transform:scale(1.1);
+}
+
+/* EFEITO BRILHO */
+
+body::after{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top right,
+    rgba(37,99,235,0.18),
+    transparent 35%);
+    z-index:-1;
+}
+
+/* NAVBAR */
+
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    z-index:999;
+    padding:18px;
+    backdrop-filter:blur(14px);
+    background:rgba(15,23,42,0.55);
+    border-bottom:1px solid rgba(255,255,255,0.08);
+    text-align:center;
+}
+
+nav a{
+    color:#fff;
+    text-decoration:none;
+    margin:0 18px;
+    font-weight:600;
+    transition:0.3s;
+    position:relative;
+}
+
+nav a:hover{
+    color:#60a5fa;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0;
+    height:2px;
+    left:0;
+    bottom:-5px;
+    background:#60a5fa;
+    transition:0.3s;
+}
+
+nav a:hover::after{
+    width:100%;
+}
+
+/* HEADER */
+
+header{
+    min-height:65vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:20px;
+}
+
+header h1{
+    font-size:70px;
+    font-weight:700;
+    margin-bottom:15px;
+    background:linear-gradient(90deg,#60a5fa,#2563eb);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:fadeDown 1s ease;
+}
+
+header p{
+    font-size:22px;
+    color:#cbd5e1;
+    max-width:700px;
+    animation:fadeUp 1.2s ease;
+}
+
+/* SEÇÕES */
+
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:100px 25px;
+}
+
+section h2{
+    font-size:38px;
+    margin-bottom:35px;
+    text-align:center;
+    position:relative;
+}
+
+section h2::after{
+    content:'';
+    width:80px;
+    height:4px;
+    background:#2563eb;
+    display:block;
+    margin:12px auto;
+    border-radius:10px;
+}
+
+/* CARDS */
+
+.card{
+    background:rgba(15,23,42,0.55);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:30px;
+    margin-bottom:25px;
+    transition:0.4s;
+    box-shadow:
+    0 8px 30px rgba(0,0,0,0.35);
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    border-color:#2563eb;
+    box-shadow:
+    0 10px 40px rgba(37,99,235,0.25);
+}
+
+/* PROJETOS */
+
+.project-icon{
+    font-size:38px;
+    margin-bottom:18px;
+    color:#60a5fa;
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:24px;
+}
+
+.card p{
+    color:#cbd5e1;
+    line-height:1.8;
+}
+
+/* BOTÃO */
+
+.btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 28px;
+    border-radius:14px;
+    background:linear-gradient(90deg,#2563eb,#1d4ed8);
+    color:#fff;
+    text-decoration:none;
+    font-weight:600;
+    transition:0.4s;
+    box-shadow:
+    0 5px 20px rgba(37,99,235,0.4);
+}
+
+.btn:hover{
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:
+    0 8px 30px rgba(37,99,235,0.6);
+}
+
+/* SERVIÇOS */
+
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.service-card{
+    background:rgba(15,23,42,0.55);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:22px;
+    padding:35px 20px;
+    text-align:center;
+    transition:0.4s;
+    box-shadow:
+    0 8px 30px rgba(0,0,0,0.35);
+}
+
+.service-card:hover{
+    transform:translateY(-10px) scale(1.03);
+    border-color:#3b82f6;
+    box-shadow:
+    0 10px 40px rgba(59,130,246,0.35);
+}
+
+.service-card i{
+    font-size:52px;
+    color:#60a5fa;
+    margin-bottom:20px;
+    transition:0.4s;
+}
+
+.service-card:hover i{
+    transform:scale(1.15);
+    color:#93c5fd;
+}
+
+.service-card h3{
+    font-size:22px;
+    color:#f8fafc;
+    line-height:1.5;
+}
+
+/* ORÇAMENTO */
+
+.quote-box{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    margin-top:50px;
+    background:rgba(15,23,42,0.55);
+    backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:30px;
+    padding:45px;
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+}
+
+.quote-info h3{
+    font-size:34px;
+    margin-bottom:20px;
+    color:#60a5fa;
+}
+
+.quote-info p{
+    color:#cbd5e1;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+.quote-info ul{
+    list-style:none;
+}
+
+.quote-info li{
+    margin-bottom:15px;
+    color:#f1f5f9;
+}
+
+.quote-info i{
+    color:#3b82f6;
+    margin-right:10px;
+}
+
+.quote-form{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.input-group{
+    display:flex;
+    align-items:center;
+    background:rgba(255,255,255,0.05);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:14px;
+    padding:15px;
+    transition:0.3s;
+}
+
+.input-group:hover{
+    border-color:#3b82f6;
+}
+
+.input-group i{
+    color:#60a5fa;
+    margin-right:12px;
+    font-size:18px;
+}
+
+.input-group input{
+    width:100%;
+    background:none;
+    border:none;
+    outline:none;
+    color:#fff;
+    font-size:16px;
+}
+
+.input-group input::placeholder{
+    color:#94a3b8;
+}
+
+.quote-form button{
+    border:none;
+    cursor:pointer;
+}
+
+@media(max-width:900px){
+
+    .quote-box{
+        grid-template-columns:1fr;
+        padding:30px;
+    }
+
+    .quote-info h3{
+        font-size:28px;
+    }
+
+}
+
+/* POPUP */
+
+.popup{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.7);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:0.4s;
+    z-index:9999;
+}
+
+.popup.show{
+    opacity:1;
+    visibility:visible;
+}
+
+.popup-content{
+    background:rgba(15,23,42,0.95);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,0.08);
+    border-radius:24px;
+    padding:40px;
+    width:90%;
+    max-width:420px;
+    text-align:center;
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.5);
+    animation:popupAnimation 0.5s ease;
+}
+
+.popup-content i{
+    font-size:70px;
+    color:#22c55e;
+    margin-bottom:20px;
+}
+
+.popup-content h3{
+    font-size:30px;
+    margin-bottom:15px;
+}
+
+.popup-content p{
+    color:#cbd5e1;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.popup-content button{
+    border:none;
+    padding:14px 28px;
+    border-radius:12px;
+    background:linear-gradient(90deg,#2563eb,#1d4ed8);
+    color:#fff;
+    font-size:16px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.popup-content button:hover{
+    transform:scale(1.05);
+}
+
+@keyframes popupAnimation{
+
+    from{
+        opacity:0;
+        transform:translateY(30px) scale(0.9);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+
+}
+    
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:35px;
+    background:rgba(2,6,23,0.9);
+    color:#94a3b8;
+    border-top:1px solid rgba(255,255,255,0.05);
+}
+
+/* ANIMAÇÕES */
+
+.fade{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 1s ease;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@keyframes fadeDown{
+    from{
+        opacity:0;
+        transform:translateY(-40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(40px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+    header h1{
+        font-size:42px;
+    }
+
+    header p{
+        font-size:18px;
+    }
+
+    nav a{
+        margin:0 10px;
+        font-size:14px;
+    }
+
+    section{
+        padding:80px 20px;
+    }
+
+    section h2{
+        font-size:30px;
+    }
+
+    .card{
+        padding:24px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav>
+    
+    <a href="#sobre">Sobre</a>
+    <a href="#projetos">Projetos</a>
+    <a href="#servicos">Serviços</a>
+    <a href="#orcamento">Orçamento</a>
+    <a href="#contato">Contato</a>
+
+</nav>
+
+<header>
+
+    <h1>Felipe Augusto Candido</h1>
+
+    <p>
+        Profissional de T.I | Infraestrutura | Segurança | Automação
+    </p>
+
+</header>
+
+<section id="sobre" class="fade">
+
+    <h2>Sobre mim</h2>
+
+    <div class="card">
+
+        <p>
+            Profissional de TI com mais de 9 anos de experiência em infraestrutura de redes, Suporte, segurança e automação.
+            Focado em soluções eficientes e melhoria contínua.
+        </p>
+
+    </div>
+
+</section>
+
+<section id="projetos" class="fade">
+
+    <h2>Projetos</h2>
+
+    <div class="card">
+
+        <div class="project-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+
+        <h3>Segurança</h3>
+
+        <p>
+            Implementação de políticas de segurança Empresarial relacionados a T.I e Segurança da informação no Microsoft 365. Entre outros..
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <div class="project-icon">
+            <i class="fa-solid fa-network-wired"></i>
+        </div>
+
+        <h3>Infraestrutura</h3>
+
+        <p>
+            Gerenciamento de rede corporativa, Switchs, Roteadores, Repetidores, Cabeamento e configurações com múltiplos dispositivos.
+        </p>
+
+    </div>
+
+    <div class="card">
+
+        <div class="project-icon">
+            <i class="fa-solid fa-gears"></i>
+        </div>
+
+        <h3>Automação</h3>
+
+        <p>
+            Automação de tarefas com scripts e ferramentas de TI.
+        </p>
+
+    </div>
+
+</section>
+    
+<!-- SERVIÇOS -->
+
+<section id="servicos" class="fade">
+
+    <h2>Serviços de T.I</h2>
+
+    <div class="services-grid">
+
+        <div class="service-card">
+            <i class="fa-solid fa-user-shield"></i>
+            <h3>Contas & Acessos</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-chart-line"></i>
+            <h3>Business Intelligence & Relatórios</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-chalkboard"></i>
+            <h3>Tecnologia & Equipamentos Educacionais</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-people-group"></i>
+            <h3>Consultoria & Desenvolvimento</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-laptop"></i>
+            <h3>Suporte a Dispositivos</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-envelope"></i>
+            <h3>Email, Calendário & Colaboração</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-cloud"></i>
+            <h3>Aplicações Corporativas</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-wifi"></i>
+            <h3>Rede, Voz & Conectividade</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-microscope"></i>
+            <h3>Pesquisa em T.I</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-lock"></i>
+            <h3>Segurança</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-chalkboard-user"></i>
+            <h3>Suporte & Treinamento</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-database"></i>
+            <h3>Sistemas & Infraestrutura de Dados</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-graduation-cap"></i>
+            <h3>Ensino & Aprendizagem</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-video"></i>
+            <h3>Vídeo & Mídia</h3>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-globe"></i>
+            <h3>Desenvolvimento Web & Hospedagem</h3>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ORÇAMENTO -->
+
+<section id="orcamento" class="fade">
+
+    <h2>Solicite um Orçamento</h2>
+
+    <div class="quote-box">
+
+        <div class="quote-info">
+
+            <h3>Transforme sua infraestrutura de T.I</h3>
+
+            <p>
+                Preencha os dados abaixo e retornaremos com uma proposta personalizada para sua empresa.
+            </p>
+
+            <ul>
+                <li><i class="fa-solid fa-check"></i> Segurança da Informação</li>
+                <li><i class="fa-solid fa-check"></i> Infraestrutura Corporativa</li>
+                <li><i class="fa-solid fa-check"></i> Redes & Servidores</li>
+                <li><i class="fa-solid fa-check"></i> Automação & Suporte</li>
+            </ul>
+
+        </div>
+
+        <form class="quote-form"
+        action="https://formsubmit.co/lipe-candido@hotmail.com"
+        method="POST">
+
+            <div class="input-group">
+                <i class="fa-solid fa-user"></i>
+                <input type="text"
+                name="nome"
+                placeholder="Seu nome"
+                required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email"
+                name="email"
+                placeholder="Seu e-mail"
+                required>
+            </div>
+
+            <div class="input-group">
+                <i class="fa-brands fa-whatsapp"></i>
+                <input type="tel"
+                name="whatsapp"
+                placeholder="Seu WhatsApp"
+                required>
+            </div>
+
+            <button type="submit" class="btn">
+
+                <i class="fa-solid fa-paper-plane"></i>
+                Solicitar orçamento
+
+            </button>
+
+        </form>
+
+    </div>
+
+    
+<section id="contato" class="fade">
+
+    <h2>Contato</h2>
+
+    <div class="card">
+
+        <p>
+            <i class="fa-solid fa-envelope"></i>
+            <strong>Email:</strong>
+            lipe-candido@hotmail.com
+        </p>
+
+        <br>
+
+        <p>
+            <i class="fa-brands fa-linkedin"></i>
+            <strong>LinkedIn:</strong>
+            www.linkedin.com/in/felipe-augusto-candido-b46474b5/
+        </p>
+        
+        <br>
+
+        <p>
+            <i class="fa-brands fa-instagram"></i>
+
+            <strong>Instagram:</strong>
+
+            <a href="https://www.instagram.com/yn.feecshaq/"
+            target="_blank"
+            style="color:#60a5fa; text-decoration:none;">
+
+            @yn.feecshaq
+
+            </a>
+        </p>
+
+        
+       <a class="btn"
+        href="https://wa.me/5516974011740"
+        target="_blank">
+
+        <i class="fa-brands fa-whatsapp"></i>
+        Entrar em contato
+
+        </a>
+
+    </div>
+
+</section>
+    
+<!-- POPUP SUCESSO -->
+
+<div id="success-popup" class="popup">
+
+    <div class="popup-content">
+
+        <i class="fa-solid fa-circle-check"></i>
+
+        <h3>Orçamento enviado com sucesso!</h3>
+
+        <p>
+            Recebemos suas informações.
+            Em breve entraremos em contato.
+        </p>
+
+        <button onclick="closePopup()">
+
+            Fechar
+
+        </button>
+
+    </div>
+
+</div>
+    
+<footer>
+
+    <p>
+        © 2026 Felipe Candido
+    </p>
+
+</footer>
+
+<script>
+
+/* ANIMAÇÃO AO ROLAR */
+
+const elements = document.querySelectorAll('.fade');
+
+function showOnScroll(){
+
+    elements.forEach(el => {
+
+        const top = el.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 100){
+
+            el.classList.add('show');
+
+        }
+
+    });
+
+}
+
+window.addEventListener('scroll',showOnScroll);
+
+showOnScroll();
+
+/* POPUP ORÇAMENTO */
+
+const form = document.querySelector('.quote-form');
+
+const popup = document.getElementById('success-popup');
+
+form.addEventListener('submit', function(e){
+
+    e.preventDefault();
+
+    fetch(form.action,{
+        method:'POST',
+        body:new FormData(form)
+    })
+
+    .then(response => {
+
+        popup.classList.add('show');
+
+        form.reset();
+
+    });
+
+});
+
+function closePopup(){
+
+    popup.classList.remove('show');
+
+}
+    
+</script>
+
+</body>
+</html>

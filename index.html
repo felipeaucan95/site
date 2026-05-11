@@ -494,99 +494,115 @@ footer{
     }
 }
 
-/* NOTEBOOK FUTURISTA */
+<!-- ================= NOTEBOOK PREMIUM REALISTA ================= -->
+
+<style>
+
+/* NOTEBOOK PREMIUM REALISTA */
 
 .floating-laptop{
     position:relative;
-    width:100%;
     display:flex;
     justify-content:center;
-    margin-top:-40px;
-    margin-bottom:80px;
-    perspective:1200px;
+    align-items:center;
+    margin-top:55px;
+    margin-bottom:30px;
+    perspective:1400px;
 }
+
+/* GLOW ATRÁS */
+
+.floating-laptop::before{
+    content:'';
+
+    position:absolute;
+
+    width:650px;
+    height:650px;
+
+    background:
+    radial-gradient(circle,
+    rgba(37,99,235,0.35),
+    transparent 70%);
+
+    filter:blur(120px);
+
+    z-index:-2;
+
+    animation:
+    pulseGlow 6s ease-in-out infinite;
+}
+
+/* NOTEBOOK */
 
 .laptop{
     position:relative;
-    width:320px;
-    height:220px;
+
+    width:620px;
+    max-width:92vw;
+
     transform-style:preserve-3d;
+
     animation:
-    floatLaptop 6s ease-in-out infinite;
+    floatLaptop 7s ease-in-out infinite;
 }
 
 /* TELA */
 
 .screen{
-    position:absolute;
-    width:320px;
-    height:190px;
-    background:
-    linear-gradient(145deg,
-    rgba(30,41,59,0.95),
-    rgba(15,23,42,0.95));
+    position:relative;
 
-    border:2px solid rgba(96,165,250,0.25);
-
-    border-radius:18px 18px 10px 10px;
-
-    transform-origin:bottom;
-    animation:
-    openScreen 4s ease-in-out infinite;
+    width:100%;
+    aspect-ratio:16/10;
 
     overflow:hidden;
-    
+
+    border-radius:22px 22px 14px 14px;
+
+    background:#0f172a;
+
+    border:1px solid rgba(255,255,255,0.08);
+
     box-shadow:
-    0 0 40px rgba(37,99,235,0.35),
-    inset 0 0 25px rgba(96,165,250,0.15);
+    0 25px 70px rgba(0,0,0,0.55),
+    0 0 40px rgba(37,99,235,0.18);
+
+    transform-origin:bottom;
+
+    animation:
+    openScreen 7s ease-in-out infinite;
 }
-    
-/* IMAGEM DA TELA */
+
+/* IMAGEM WINDOWS */
 
 .screen-image{
     position:absolute;
     inset:0;
+
     width:100%;
     height:100%;
+
     object-fit:cover;
+
     object-position:center;
-    border-radius:16px 16px 8px 8px;
+
     z-index:1;
 }
-    
-/* BRILHO DA TELA */
 
-.screen-glow{
-    position:absolute;
-    width:180%;
-    height:180%;
-    background:
-    radial-gradient(circle,
-    rgba(96,165,250,0.22),
-    transparent 60%);
+/* REFLEXO */
 
-    top:-40%;
-    left:-40%;
-
-    animation:
-    glowMove 5s linear infinite;
-}
-
-        /* BRILHO DA REFLEXO REALISTA */
-    
-    .screen-reflection{
+.screen-reflection{
     position:absolute;
     inset:0;
+
     background:
     linear-gradient(
         120deg,
         rgba(255,255,255,0.22),
-        transparent 28%,
-        transparent 68%,
+        transparent 25%,
+        transparent 60%,
         rgba(255,255,255,0.08)
     );
-
-    border-radius:16px 16px 8px 8px;
 
     z-index:3;
 
@@ -595,56 +611,106 @@ footer{
     mix-blend-mode:screen;
 }
 
+/* GLOW TELA */
+
+.screen-glow{
+    position:absolute;
+
+    width:200%;
+    height:200%;
+
+    background:
+    radial-gradient(circle,
+    rgba(96,165,250,0.15),
+    transparent 60%);
+
+    top:-50%;
+    left:-50%;
+
+    z-index:2;
+
+    animation:
+    glowMove 10s linear infinite;
+}
+
 /* BASE */
 
 .base{
     position:absolute;
-    width:340px;
-    height:18px;
+
+    width:108%;
+    height:22px;
+
+    left:-4%;
+    bottom:-14px;
+
+    border-radius:0 0 24px 24px;
+
     background:
-    linear-gradient(90deg,
-    #1e293b,
-    #334155);
-
-    bottom:-12px;
-    left:-10px;
-
-    border-radius:0 0 18px 18px;
+    linear-gradient(
+        180deg,
+        #334155,
+        #0f172a
+    );
 
     box-shadow:
-    0 8px 30px rgba(0,0,0,0.5);
+    0 15px 40px rgba(0,0,0,0.55);
 }
 
-/* ANIMAÇÕES */
+/* TRACKPAD */
+
+.base::after{
+    content:'';
+
+    position:absolute;
+
+    width:120px;
+    height:10px;
+
+    background:
+    rgba(255,255,255,0.12);
+
+    border-radius:20px;
+
+    left:50%;
+    transform:translateX(-50%);
+
+    top:5px;
+}
+
+/* FLUTUAR */
 
 @keyframes floatLaptop{
 
     0%{
         transform:
         translateY(0px)
-        rotateY(-8deg);
+        rotateY(-7deg)
+        rotateX(2deg);
     }
 
     50%{
         transform:
         translateY(-18px)
-        rotateY(8deg);
+        rotateY(7deg)
+        rotateX(-2deg);
     }
 
     100%{
         transform:
         translateY(0px)
-        rotateY(-8deg);
+        rotateY(-7deg)
+        rotateX(2deg);
     }
 }
 
-/* ABRIR E FECHAR */
+/* ABRIR TELA */
 
 @keyframes openScreen{
 
     0%{
         transform:
-        rotateX(-85deg);
+        rotateX(-78deg);
     }
 
     50%{
@@ -654,53 +720,55 @@ footer{
 
     100%{
         transform:
-        rotateX(-85deg);
+        rotateX(-78deg);
     }
 }
 
-/* GLOW MOVENDO */
+/* GLOW GIRANDO */
 
 @keyframes glowMove{
 
     0%{
-        transform:
-        rotate(0deg);
+        transform:rotate(0deg);
     }
 
     100%{
-        transform:
-        rotate(360deg);
+        transform:rotate(360deg);
     }
 }
-    
+
+/* PULSO GLOW */
+
+@keyframes pulseGlow{
+
+    0%{
+        opacity:.6;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.08);
+    }
+
+    100%{
+        opacity:.6;
+        transform:scale(1);
+    }
+}
+
 /* RESPONSIVO */
 
 @media(max-width:768px){
 
-    header h1{
-        font-size:42px;
+    .floating-laptop{
+        margin-top:40px;
     }
 
-    header p{
-        font-size:18px;
+    .laptop{
+        width:95vw;
     }
 
-    nav a{
-        margin:0 10px;
-        font-size:14px;
-    }
-
-    section{
-        padding:80px 20px;
-    }
-
-    section h2{
-        font-size:30px;
-    }
-
-    .card{
-        padding:24px;
-    }
 }
 
 </style>
@@ -731,14 +799,12 @@ footer{
     <p>
         
     </p>
-<div class="floating-laptop">
-
-    <div class="laptop">
+<div class="laptop">
 
         <div class="screen">
 
             <img
-            src="https://images.unsplash.com/photo-1633412802994-5c058f151b66?q=80&w=1600&auto=format&fit=crop"
+            src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?q=80&w=1600&auto=format&fit=crop"
             alt="Windows 11 Desktop"
             class="screen-image">
 
